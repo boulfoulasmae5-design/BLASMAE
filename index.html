@@ -1,66 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Asmae Boulfoul | Finance Digitale</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asmae Boulfoul | Finance Digitale</title>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f8d3e6, #d3e5ff);
-            text-align: center;
-            padding: 60px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        h1 { font-size: 40px; color: #2c3e50; }
-        h2 { color: #555; margin-bottom: 40px; }
+<style>
 
-        .card {
-            background: white;
-            width: 350px;
-            margin: 25px auto;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
 
-        .card:hover { transform: scale(1.05); }
+body{
+background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+color:#2c3e50;
+}
 
-        a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background: #ff69b4;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-        }
+/* HEADER */
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+animation:fadeIn 1.5s ease-in-out;
+}
 
-        a:hover { background: #e91e63; }
-    </style>
+header h1{
+font-size:50px;
+font-weight:700;
+}
+
+header h2{
+margin-top:15px;
+font-weight:300;
+}
+
+.btn{
+margin-top:30px;
+padding:12px 25px;
+background:#ff4da6;
+color:white;
+text-decoration:none;
+border-radius:30px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#e60073;
+transform:scale(1.1);
+}
+
+/* SECTION */
+section{
+padding:80px 10%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+font-size:32px;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(10px);
+width:300px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.4s;
+opacity:0;
+transform:translateY(50px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card a{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#ff4da6;
+color:white;
+text-decoration:none;
+border-radius:20px;
+}
+
+/* GRAPH */
+.chart-container{
+width:100%;
+max-width:600px;
+margin:0 auto;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:40px;
+background:white;
+margin-top:50px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(-30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@media(max-width:768px){
+.cards{
+flex-direction:column;
+align-items:center;
+}
+}
+
+</style>
 </head>
 
 <body>
 
+<header>
 <h1>🌸 Asmae Boulfoul</h1>
 <h2>Finance Digitale | Data Science | Analyse Quantitative</h2>
+<a href="#projects" class="btn">Voir mes projets</a>
+</header>
+
+<section id="projects">
+<h2 class="section-title">📊 Projets & Applications</h2>
+
+<div class="cards">
 
 <div class="card">
-    <h3>📊 Simulation Monte Carlo</h3>
-    <a href="https://53vzyd-bl-asmae.shinyapps.io/montevf/" target="_blank">
-        Ouvrir l'application
-    </a>
+<h3>Simulation Monte Carlo</h3>
+<p>Application R pour analyse probabiliste et prévisions financières.</p>
+<a href="https://53vzyd-bl-asmae.shinyapps.io/montevf/" target="_blank">Ouvrir</a>
 </div>
 
 <div class="card">
-    <h3>🔐 Digitalisation Financière & Fiscale
-</h3>
-    <a href="https://53vzyd-bl-asmae.shinyapps.io/APPSEC/" target="_blank">
-        Ouvrir l'application
-    </a>
+<h3>Digitalisation Financière</h3>
+<p>Système de veille fiscale et calcul automatisé d'impôts.</p>
+<a href="https://53vzyd-bl-asmae.shinyapps.io/APPSEC/" target="_blank">Ouvrir</a>
 </div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">📈 Compétences</h2>
+
+<div class="chart-container">
+<canvas id="skillsChart"></canvas>
+</div>
+</section>
+
+<footer>
+<p>📍 Rabat | 📞 +212619336579 | ✉️ boulfoulasmae5@gmail.com</p>
+</footer>
+
+<script>
+
+/* Animation scroll */
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+const cardTop = card.getBoundingClientRect().top;
+if(cardTop < window.innerHeight - 50){
+card.classList.add('show');
+}
+});
+});
+
+/* Chart */
+const ctx = document.getElementById('skillsChart');
+
+new Chart(ctx,{
+type:'radar',
+data:{
+labels:['Comptabilité','Fiscalité','Power BI','R & Python','ERP','Analyse données'],
+datasets:[{
+label:'Niveau de maîtrise',
+data:[90,85,80,75,85,88],
+backgroundColor:'rgba(255,77,166,0.2)',
+borderColor:'#ff4da6',
+borderWidth:2
+}]
+},
+options:{
+scales:{
+r:{
+angleLines:{color:'#ccc'},
+grid:{color:'#ddd'},
+pointLabels:{font:{size:14}}
+}
+}
+}
+});
+
+</script>
 
 </body>
 </html>
