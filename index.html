@@ -9,7 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -23,6 +22,25 @@ background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
 color:#2c3e50;
 }
 
+/* NAVBAR */
+nav{
+position:fixed;
+width:100%;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+padding:15px;
+display:flex;
+justify-content:center;
+gap:25px;
+z-index:1000;
+}
+
+nav a{
+text-decoration:none;
+color:#2c3e50;
+font-weight:500;
+}
+
 /* HEADER */
 header{
 height:100vh;
@@ -31,7 +49,7 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-animation:fadeIn 1.5s ease-in-out;
+padding:20px;
 }
 
 header h1{
@@ -45,23 +63,17 @@ font-weight:300;
 }
 
 .btn{
-margin-top:30px;
+margin-top:25px;
 padding:12px 25px;
 background:#ff4da6;
 color:white;
 text-decoration:none;
 border-radius:30px;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#e60073;
-transform:scale(1.1);
 }
 
 /* SECTION */
 section{
-padding:80px 10%;
+padding:100px 10%;
 }
 
 .section-title{
@@ -70,50 +82,26 @@ margin-bottom:50px;
 font-size:32px;
 }
 
-/* CARDS */
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-}
-
+/* CARD */
 .card{
-background:rgba(255,255,255,0.7);
-backdrop-filter:blur(10px);
-width:300px;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
 padding:25px;
 border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+margin-bottom:30px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transition:0.4s;
-opacity:0;
-transform:translateY(50px);
-}
-
-.card.show{
-opacity:1;
-transform:translateY(0);
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:scale(1.03);
 }
 
-.card a{
-display:inline-block;
-margin-top:15px;
-padding:10px 20px;
-background:#ff4da6;
-color:white;
-text-decoration:none;
-border-radius:20px;
-}
-
-/* GRAPH */
-.chart-container{
-width:100%;
-max-width:600px;
-margin:0 auto;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
 }
 
 /* FOOTER */
@@ -124,77 +112,134 @@ background:white;
 margin-top:50px;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(-30px);}
-to{opacity:1; transform:translateY(0);}
-}
-
+/* RESPONSIVE */
 @media(max-width:768px){
-.cards{
-flex-direction:column;
-align-items:center;
+header h1{font-size:35px;}
 }
-}
-
 </style>
 </head>
 
 <body>
 
+<nav>
+<a href="#profil">Profil</a>
+<a href="#formation">Formation</a>
+<a href="#experience">Expérience</a>
+<a href="#competences">Compétences</a>
+<a href="#portfolio">Portfolio</a>
+</nav>
+
 <header>
 <h1>🌸 Asmae Boulfoul</h1>
 <h2>Finance Digitale | Data Science | Analyse Quantitative</h2>
-<a href="#projects" class="btn">Voir mes projets</a>
+<p>📍 Rabat | 📞 +212619336579 | ✉️ boulfoulasmae5@gmail.com</p>
+<a href="#profil" class="btn">Découvrir mon profil</a>
 </header>
 
-<section id="projects">
-<h2 class="section-title">📊 Projets & Applications</h2>
+<section id="profil">
+<h2 class="section-title">👩‍💼 Profil</h2>
+<div class="card">
+<p>
+Étudiante en Bachelor TDGCFF à l’EST Salé, titulaire d’un DUT en Techniques de Management.
+Sérieuse, rigoureuse et adaptable, avec des compétences solides en comptabilité,
+gestion financière, fiscalité et analyse de données.
+</p>
+</div>
+</section>
 
-<div class="cards">
+<section id="formation">
+<h2 class="section-title">🎓 Formation</h2>
+<div class="grid">
+<div class="card">
+<h3>Bachelor TDGCFF</h3>
+<p>2025 - EST Salé</p>
+</div>
 
 <div class="card">
+<h3>DUT Techniques de Management</h3>
+<p>2023-2025 - EST Guelmim</p>
+</div>
+
+<div class="card">
+<h3>Baccalauréat Sciences Économiques</h3>
+<p>2023 - Lycée Al Massira Al Khadra</p>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<h2 class="section-title">💼 Expériences Professionnelles</h2>
+
+<div class="card">
+<h3>Stage de Fin d’Étude - Fiduciaire Groupe Bounjoul International</h3>
+<p>Avril - Juin 2025</p>
+<ul>
+<li>Saisie des factures</li>
+<li>Déclaration TVA</li>
+<li>Préparation des bulletins de paie</li>
+<li>Déclaration IR et salaires</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Stage d’Observation - ROTOMOULAGE DU SUD RMS</h3>
+<p>Juin 2024</p>
+<ul>
+<li>Gestion des stocks</li>
+<li>Classement factures</li>
+<li>Observation marchés publics</li>
+</ul>
+</div>
+
+</section>
+
+<section id="competences">
+<h2 class="section-title">📊 Compétences</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Techniques</h3>
+<p>R & Python, Power BI, ERP (Odoo, Ciel, Dolibarr), Excel, Tadbir</p>
+</div>
+
+<div class="card">
+<h3>Soft Skills</h3>
+<p>Travail en équipe, adaptabilité, apprentissage rapide</p>
+</div>
+
+<div class="card">
+<h3>Langues</h3>
+<p>Arabe | Français | Anglais</p>
+</div>
+</div>
+
+<div style="max-width:600px;margin:50px auto;">
+<canvas id="skillsChart"></canvas>
+</div>
+
+</section>
+
+<section id="portfolio">
+<h2 class="section-title">🌐 Portfolio & Applications</h2>
+
+<div class="grid">
+<div class="card">
 <h3>Simulation Monte Carlo</h3>
-<p>Application R pour analyse probabiliste et prévisions financières.</p>
 <a href="https://53vzyd-bl-asmae.shinyapps.io/montevf/" target="_blank">Ouvrir</a>
 </div>
 
 <div class="card">
 <h3>Digitalisation Financière</h3>
-<p>Système de veille fiscale et calcul automatisé d'impôts.</p>
 <a href="https://53vzyd-bl-asmae.shinyapps.io/APPSEC/" target="_blank">Ouvrir</a>
 </div>
-
-</div>
-</section>
-
-<section>
-<h2 class="section-title">📈 Compétences</h2>
-
-<div class="chart-container">
-<canvas id="skillsChart"></canvas>
 </div>
 </section>
 
 <footer>
-<p>📍 Rabat | 📞 +212619336579 | ✉️ boulfoulasmae5@gmail.com</p>
+<p>© 2026 Asmae Boulfoul - Portfolio Professionnel</p>
 </footer>
 
 <script>
-
-/* Animation scroll */
-const cards = document.querySelectorAll('.card');
-
-window.addEventListener('scroll',()=>{
-cards.forEach(card=>{
-const cardTop = card.getBoundingClientRect().top;
-if(cardTop < window.innerHeight - 50){
-card.classList.add('show');
-}
-});
-});
-
-/* Chart */
 const ctx = document.getElementById('skillsChart');
 
 new Chart(ctx,{
@@ -202,24 +247,14 @@ type:'radar',
 data:{
 labels:['Comptabilité','Fiscalité','Power BI','R & Python','ERP','Analyse données'],
 datasets:[{
-label:'Niveau de maîtrise',
+label:'Niveau',
 data:[90,85,80,75,85,88],
 backgroundColor:'rgba(255,77,166,0.2)',
 borderColor:'#ff4da6',
 borderWidth:2
 }]
-},
-options:{
-scales:{
-r:{
-angleLines:{color:'#ccc'},
-grid:{color:'#ddd'},
-pointLabels:{font:{size:14}}
-}
-}
 }
 });
-
 </script>
 
 </body>
